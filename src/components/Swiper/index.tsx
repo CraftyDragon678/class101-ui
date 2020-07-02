@@ -12,6 +12,7 @@ import {
   Virtual,
 } from 'swiper/dist/js/swiper.esm.js';
 import { createUniqIDGenerator } from '../../utils/createUniqIDGenerator';
+import { ArrowNavigation } from './ArrowNavigation';
 import { DefaultNavigation } from './DefaultNavigation';
 
 OriginalSwiper.use([Navigation, Pagination, Autoplay, Virtual, Lazy, Keyboard, EffectFade]);
@@ -72,7 +73,7 @@ export const Swiper: FC<SwiperProps> = ({
 
 Swiper.defaultProps = {
   paginationChildren: <div className="swiper-pagination" />,
-  navigationChildren: <DefaultNavigation />,
+  navigationChildren: <ArrowNavigation />,
   freeMode: false,
   observer: true,
   pagination: {

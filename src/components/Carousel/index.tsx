@@ -216,6 +216,18 @@ const navigationPositionStyle: { [key in CarouselNavigationPosition]: FlattenSim
 };
 
 const StyledSwiper = styled(Swiper)<StyledSwiperProps>`
+  .swiper-default-navigation {
+    position: absolute;
+    ${props => (props.navigationPosition ? navigationPositionStyle[props.navigationPosition] : '')}
+    left: 50%;
+    z-index: 1;
+    width: ${props => (props.containerContentMaxWidth ? `calc(100% - ${32 * 2}px)` : '100%')};
+    ${props => props.containerContentMaxWidth && `max-width: ${props.containerContentMaxWidth + 32 * 2}px`};
+    ${media.sm`
+      display: none;
+    `};
+  }
+
   &.swiper-container {
     ${props =>
       `
@@ -244,18 +256,6 @@ const StyledSwiper = styled(Swiper)<StyledSwiperProps>`
       props.hasNavigation &&
       props.navigationPosition === CarouselNavigationPosition.TopRightOut &&
       'padding-top: 48px; margin-top: -48px;'};
-  }
-
-  .swiper-default-navigation {
-    position: absolute;
-    ${props => (props.navigationPosition ? navigationPositionStyle[props.navigationPosition] : '')}
-    left: 50%;
-    z-index: 1;
-    width: ${props => (props.containerContentMaxWidth ? `calc(100% - ${32 * 2}px)` : '100%')};
-    ${props => props.containerContentMaxWidth && `max-width: ${props.containerContentMaxWidth + 32 * 2}px`};
-    ${media.sm`
-      display: none;
-    `};
   }
 
   ${props =>
